@@ -1,0 +1,19 @@
+<h1>Chat</h1>
+
+<% @messages.each do |message| %>
+  <p>
+    <small><%= message.created_at %>:</small>
+    <%= message.body %>
+  </p>
+<% end %>
+
+<hr>
+
+<%= form_for(Message.new) do |f| %>
+  <div class="field">
+    <%= f.text_field :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
