@@ -16,8 +16,20 @@
 //= require_tree .
 
 $(function() {
+  $("form").submit(function(event) {
+    event.preventDefault();
+
+    var $form   = $(this);
+    var message = $form.find("input#message_body").val();
+    var url     = $form.attr("action");
+
+    var posting = $.post(url, { message: { body: message } } );
+  });
+});
+
+$(function() {
   var faye = new Faye.Client('http://localhost:9292/faye');
   faye.subscribe('/messages/new', function (data) {
-    alert(data);
+    eval(data);
   });
 });

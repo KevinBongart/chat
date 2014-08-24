@@ -1,11 +1,8 @@
 <h1>Chat</h1>
 
-<% @messages.each do |message| %>
-  <p>
-    <small><%= message.created_at %>:</small>
-    <%= message.body %>
-  </p>
-<% end %>
+<div id="chat">
+  <%= render @messages %>
+</div>
 
 <hr>
 
